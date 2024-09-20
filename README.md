@@ -1,8 +1,11 @@
+
+## How to run
+
+### Initialize
 ```
-npm install
-npm run dev
+make mise/trust
 ```
 
 ```
-open http://localhost:3000
+make up
 ```
