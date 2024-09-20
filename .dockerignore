@@ -1,0 +1,13 @@
+Dockerfile
+.dockerignore
+compose.yaml
+
+.git
+.github/
+.gitignore
+
+node_modules/
+
+.env*
+
+tmp/

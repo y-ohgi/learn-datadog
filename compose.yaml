@@ -1,0 +1,38 @@
+services:
+  hono:
+    build:
+      context: .
+      target: deps
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/tmp
+    environment:
+      - PORT=${PORT}
+      - HOST=${HOST}
+      - DATABASE_URL=${DATABASE_URL}
+      - DD_AGENT=${DD_AGENT}
+    command: sh -c "npm install && exec npm run dev"
+
+  db:
+    image: postgres:15-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=p@ssword
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./tmp/postgresql/data:/var/lib/postgresql/data
+
+  # dd-agent:
+  #   image: gcr.io/datadoghq/agent:7
+  #   environment:
+  #     - DD_API_KEY=${DD_API_KEY}
+  #     - DD_SITE=${DD_SITE}
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - /proc/:/host/proc/:ro
+  #     - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+  #     - /var/lib/docker/containers:/var/lib/docker/containers:ro
