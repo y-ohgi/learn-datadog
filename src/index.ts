@@ -1,12 +1,7 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
-
-const ENV = {
-  HOST: process.env.HOST,
-  PORT: process.env.PORT,
-  DATABASE_URL: process.env.DATABASE_URL,
-  DD_AGENT: process.env.DD_AGENT,
-} as { [key: string]: string };
+import { ENV } from './env'
+import './tracer'
 
 const app = new Hono()
 

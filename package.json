@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.13.0",
+    "dd-trace": "^5.22.0",
     "hono": "^4.6.2"
   },
   "devDependencies": {
